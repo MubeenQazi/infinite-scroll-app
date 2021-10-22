@@ -7,9 +7,7 @@ const API_BASE_URL =  'https://api.instantwebtools.net/v1/passenger';
 function Details(){
 
 	const [data, setData] =  React.useState([]);
-	const countRender = React.useRef(0);
 	const [count, setCount] = React.useState(0)
-
 
 	const getNewData = (count) => {
 		Axios({
@@ -30,7 +28,6 @@ function Details(){
 
 	 return (
 		<div>
-			Render:  {countRender.current}
 			<InfiniteScroll
 				dataLength={data.length}
 				next={() => {
@@ -50,23 +47,20 @@ function Details(){
 					</tr>
 				</thead>
 				<tbody>
-				
-						{data.map((elem, ind) => (
+					{data.map((elem, ind) => (
 
-							<tr key={ind} height="200px">
-								<td>{ind + 1}</td>
-								<td>{elem._id}</td>
-								<td>{elem.name}</td>
-								<td>{elem.trips}</td>
-							</tr>
+						<tr key={ind} height="200px">
+							<td>{ind + 1}</td>
+							<td>{elem._id}</td>
+							<td>{elem.name}</td>
+							<td>{elem.trips}</td>
+						</tr>
 
-						))}
+					))}
 				</tbody>
 
 			</table>
-
 			</InfiniteScroll>
-
 		</div>	
 		
 	);
